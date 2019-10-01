@@ -2,31 +2,31 @@
 SQL challenge used by a company as part of the hiring process (data analyst position)
 
 
-1. Tell me how you’ve used Relational Database Management System (RDBM) in the past.  What did you use it for and why?
+**1. Tell me how you’ve used Relational Database Management System (RDBM) in the past.  What did you use it for and why?**
 
 I used RDBM during my studies and personal projects (one project was to analyze international debt data collected by The World Bank in order to know what is the average amount of debt owed by countries across different debt indicators etc.) 
 In my previous job, I implemented a mock database from online extracts (downloading csv files from our online ordering website for example) in order to build better reports and indicators. Unfortunately, the CEO did not appreciate the solution so it was discarded (one of the reasons why I decided to move on – no use of technology and data to generate better insights in the decision-making process). 
 
 
-2.  What standard SQL commands do you know?
+**2.  What standard SQL commands do you know?
 
 I mostly use data definition language (to create my database and tables) and data manipulation language. I haven’t used TCL or DCL. 
 List of commands: CREATE, ALTER, DROP, TRUNCATE, RENAME, SELECT, UPDATE, INSERT, DELETE
 
 
-3. Give me an example of how you’ve used Null and Zero values in the past?
+**3. Give me an example of how you’ve used Null and Zero values in the past?
 
 Null values are dangerous for calculations (operations with a null value return a null value). It is particularly dangerous when adding a new numeric column that will be used for calculation: historical values (meaning data existing before the addon) will be nulls and can alter calculations. It is then better to coalesce the nulls to transform them into another value.
 For example, in adding a column of percentage of debt held by domestic actors (which will then be used in a multiplication to determine the amount of debt held by domestic and foreign actors), I had to replace the null values for prior years (when data was not available). 
 
 
-4. Explain the definition of a dimension of data warehousing? What are the primary functions of the dimensions?
+**4. Explain the definition of a dimension of data warehousing? What are the primary functions of the dimensions?
 
 A dimension is generally an attribute of the transaction data that is stored in its own table for normalization. 
 For example, a car dealership just sold a car. Let’s say we have a table with transaction_id (for this sale transaction_id = 123) and car_id (car_id = abc). In this case, we would have a dimension table that has a list of car ids, make, model, year, mileage etc. For example car abc is a: Peugeot, 206, 2017, 150 000 kms etc.
 
 
-5. Explain the difference between an inner join and outer join using an example.
+**5. Explain the difference between an inner join and outer join using an example.
 
 An inner join will combine two tables only for the records that are present in both tables (it returns the intersection of the two tables). The left outer join will return the entire left table and add the attributes for the records that are also in the right table (and create nulls for the other records). The right outer join is the inverse (but return the full right table …). The full outer join will return the integrality of the two tables. 
  
@@ -76,7 +76,7 @@ Josh	Brasil
 Null	France
 
 
-6. I am looking for average order by customer when the customer has at least one order. What is wrong with the SQL query below?
+**6. I am looking for average order by customer when the customer has at least one order. What is wrong with the SQL query below?
 SELECT UserID, AVG(Total) as AvgOrderTotal
 FROM Invoices
 HAVING COUNT(OrderID) >= 1
@@ -85,7 +85,7 @@ This query will return an error because the HAVING argument must be present in t
 Also, we can imagine that an OrderID might be repeated (if the order is composed of several things, depending on the database/table structure). For example, an order might be for one soccer ball, a Barcelona jersey and a pair of cleats. We could add DISTINCT to the HAVING clause (HAVING COUNT (DISTINCT OrderId) >= 1 		- after having corrected the SELECT statement.
 
 
-7. Please review the table below. Write a query that retrieves the employees’ names and recruiters’ names. If an employee was not hired by a recruiter, leave the cell blank.  
+**7. Please review the table below. Write a query that retrieves the employees’ names and recruiters’ names. If an employee was not hired by a recruiter, leave the cell blank. Please look at the word for a clearer picture of the tables and the SQL document for the queries.
 
 People table
 Person_id	Name	Recruited_by
@@ -109,7 +109,7 @@ LEFT JOIN people as b
 ON a.Recruited_by = b.Person_id;
 
 
-8. Please review the table below. Write a query that retrieves the names of the recruiters that hire more than 3 employees, and the # of employees who were not hired by a recruiter.
+**8. Please review the table below. Write a query that retrieves the names of the recruiters that hire more than 3 employees, and the # of employees who were not hired by a recruiter. Please look at the word for a clearer picture of the tables and the SQL document for the queries.
 
 People table
 Person_id	Name	Recruited_by
@@ -150,7 +150,7 @@ FROM people
 WHERE COALESCE(recruited_by, 9) = 9; 
 
 
-9. Please review the table below. Write a query that retrieves the two companies that have the highest duplicate employee entrees. 
+**9. Please review the table below. Write a query that retrieves the two companies that have the highest duplicate employee entrees.  Please look at the word for a clearer picture of the tables and the SQL document for the queries. 
 
 People table
 Person_id	Name	Company_id
